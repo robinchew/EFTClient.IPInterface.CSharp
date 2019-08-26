@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>CLIDemo</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IPInterface\IPInterface.csproj">
+      <Project>{3de3ff35-5303-41f0-9f66-5b5ab2b6b7df}</Project>
+      <Name>IPInterface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="4.6.0-preview8.19405.3" />
+  </ItemGroup>
+</Project>
