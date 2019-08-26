@@ -38,6 +38,10 @@ class EFTClientIPDemo
                 foreach(var Str in e.Response.DisplayText) {
                     var isApproved = Str.Trim() == "APPROVED";
                     if (isApproved) {
+                        // This automatically presses the OK button
+                        // from the APPROVED popup produced by
+                        // EftClntUI making a faster successful
+                        // transaction,
                         eft.DoSendKey(new EFTSendKeyRequest() {
                             Key = EFTPOSKey.OkCancel
                         });
