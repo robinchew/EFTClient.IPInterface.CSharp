@@ -5,10 +5,10 @@ Get Started on Linux
 cd DotNetCore.CLIDemo
 ```
 ```
-dotnet run '{"host": "192.168.1.17", "port": 2994, "amount": 8.0, "ssl": false, "port": 2011}'
+dotnet run '{"host": "127.0.0.1", "port": 2011, "amount": 1.0, "ssl": false}'
 ```
 OR
 ```
 dotnet build -r linux-64
-./bin/Debug/netcoreapp2.2/linux-x64/CLIDemo '{"host": "192.168.1.17", "port": 2994, "amount": 8.0, "ssl": false, "port": 2011}'
+./bin/Debug/netcoreapp2.2/linux-x64/CLIDemo '{"host": "127.0.0.1", "port": 2011, "amount": 1.0, "ssl": false}'
 ```
