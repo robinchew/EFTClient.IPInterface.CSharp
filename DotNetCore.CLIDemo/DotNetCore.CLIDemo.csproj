@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyName>CLIDemo</AssemblyName>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\IPInterface\IPInterface.csproj">
