@@ -55,7 +55,7 @@ class EFTClientIPDemo
             if (!eft.Connect())
             {
                 // Handle failed connection
-                Console.WriteLine("Connect failed");
+                Console.Error.WriteLine("Connect failed");
                 return;
             }
 
@@ -78,7 +78,7 @@ class EFTClientIPDemo
             if (!eft.DoTransaction(r))
             {
                 // Handle failed send
-                Console.WriteLine("Send failed");
+                Console.Error.WriteLine("Send failed");
                 return;
             }
 
@@ -90,26 +90,26 @@ class EFTClientIPDemo
         private void Eft_OnTerminated(object sender, SocketEventArgs e)
         {
             // Handle socket close
-            Console.WriteLine($"Socket closed");
+            Console.Error.WriteLine("Socket closed");
             txnFired.Reset();
         }
 
         private void Eft_OnReceipt(object sender, EFTEventArgs<EFTReceiptResponse> e)
         {
             // Handle receipt
-            Console.WriteLine($"{e.Response.Type} receipt");
             Array.ForEach(e.Response.ReceiptText, Console.WriteLine);
         }
 
         private void Eft_OnTransaction(object sender, EFTEventArgs<EFTTransactionResponse> e)
         {
-            // Handle transaction event 
-            var displayText = e.Response.Success ? "successful" : "unsuccessful";
-            Console.WriteLine($"Transaction was {displayText}");
+            // Handle transaction event
+            if (! e.Response.Success) {
+                Console.Error.WriteLine("Transaction was unsuccessful");
+            }
             txnFired.Set();
         }
     }
-    
+
 class Program
     {
         static void Main(string[] args)
