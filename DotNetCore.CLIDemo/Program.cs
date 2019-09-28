@@ -90,7 +90,6 @@ class EFTClientIPDemo
         private void Eft_OnTerminated(object sender, SocketEventArgs e)
         {
             // Handle socket close
-            Console.Error.WriteLine("Socket closed");
             txnFired.Reset();
         }
 
