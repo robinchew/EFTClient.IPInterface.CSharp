@@ -18,6 +18,14 @@ class CommandArgs {
     public decimal Amount { get; set; }
 }
 
+class ReceiptJsonResponse {
+    [JsonPropertyName("type")]
+    public char Type { get; set; }
+
+    [JsonPropertyName("receipt_text")]
+    public string ReceiptText { get; set; }
+}
+
 public delegate void Print(int value);
 
 class EFTClientIPDemo
@@ -96,7 +104,10 @@ class EFTClientIPDemo
         private void Eft_OnReceipt(object sender, EFTEventArgs<EFTReceiptResponse> e)
         {
             // Handle receipt
-            Array.ForEach(e.Response.ReceiptText, Console.WriteLine);
+            Console.WriteLine(JsonSerializer.Serialize<ReceiptJsonResponse>(new ReceiptJsonResponse() {
+                Type = (char) e.Response.Type,
+                ReceiptText = String.Join(Environment.NewLine, e.Response.ReceiptText)
+            }));
         }
 
         private void Eft_OnTransaction(object sender, EFTEventArgs<EFTTransactionResponse> e)
